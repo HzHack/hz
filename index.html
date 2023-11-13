@@ -108,12 +108,12 @@ footer a {color: #3c97bf;text-decoration: none;margin-right:5px;}
 </body>
 
 
-#faslh
+
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>عداد الزوار</title>
+    <title> زوار الموقع </title>
     <script>
         function incrementCounter() {
             if (localStorage.getItem('counter')) {
@@ -125,11 +125,10 @@ footer a {color: #3c97bf;text-decoration: none;margin-right:5px;}
             }
             document.getElementById('counter').innerHTML = localStorage.getItem('counter');
         }
+        setInterval(incrementCounter, 1000); // استدعاء incrementCounter() كل ثانية واحدة (1000 مللي ثانية)
     </script>
 </head>
-<body onload="incrementCounter()">
-    <h1>عدد الزوار: <span id="counter"></span></h1>
-    <button onclick="incrementCounter()">زيادة العداد</button>
+<body>
+    <h1> زوار الموقع : <span id="counter"></span></h1>
 </body>
 </html>
-
