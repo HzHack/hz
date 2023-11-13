@@ -107,3 +107,29 @@ footer a {color: #3c97bf;text-decoration: none;margin-right:5px;}
 </footer>
 </body>
 
+
+#faslh
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>عداد الزوار</title>
+    <script>
+        function incrementCounter() {
+            if (localStorage.getItem('counter')) {
+                var count = parseInt(localStorage.getItem('counter'));
+                count += 1;
+                localStorage.setItem('counter', count);
+            } else {
+                localStorage.setItem('counter', 1);
+            }
+            document.getElementById('counter').innerHTML = localStorage.getItem('counter');
+        }
+    </script>
+</head>
+<body onload="incrementCounter()">
+    <h1>عدد الزوار: <span id="counter"></span></h1>
+    <button onclick="incrementCounter()">زيادة العداد</button>
+</body>
+</html>
+
