@@ -111,24 +111,3 @@ footer a {color: #3c97bf;text-decoration: none;margin-right:5px;}
 
 
 <!DOCTYPE html>
-<html>
-<head>
-    <title> زوار الموقع </title>
-    <script>
-        function incrementCounter() {
-            if (localStorage.getItem('counter')) {
-                var count = parseInt(localStorage.getItem('counter'));
-                count += 1;
-                localStorage.setItem('counter', count);
-            } else {
-                localStorage.setItem('counter', 1);
-            }
-            document.getElementById('counter').innerHTML = localStorage.getItem('counter');
-        }
-        setInterval(incrementCounter, 1000); // استدعاء incrementCounter() كل ثانية واحدة (1000 مللي ثانية)
-    </script>
-</head>
-<body>
-    <h1> زوار الموقع : <span id="counter"></span></h1>
-</body>
-</html>
