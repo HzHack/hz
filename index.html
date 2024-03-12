@@ -113,23 +113,4 @@ footer a {color: #3c97bf;text-decoration: none;margin-right:5px;}
 
 
 
-    <!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<title>عدد زوار الموقع</title>
-</head>
-<body>
-<div id="visitorCount">جاري تحميل عدد الزوار...</div>
-
-<script>
-// استخدم JavaScript للاتصال بالخادم وجلب عدد الزوار
-fetch('path_to_your_api/visitors_count')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('visitorCount').textContent = `عدد الزوار الذين زاروا الموقع: ${data}`;
-  })
-  .catch(error => console.error('خطأ في جلب البيانات:', error));
-</script>
-</body>
-</html>
+    
