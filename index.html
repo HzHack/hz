@@ -111,3 +111,21 @@ footer a {color: #3c97bf;text-decoration: none;margin-right:5px;}
 
 
 <!DOCTYPE html>
+
+
+
+    <?php
+session_start();
+
+// إذا كانت هذه هي الزيارة الأولى للمستخدم، قم بإنشاء متغير جديد في الجلسة
+if (!isset($_SESSION['visitors'])) {
+    $_SESSION['visitors'] = 1;
+} else {
+    // إذا كان المستخدم قد زار الموقع من قبل، قم بزيادة العدد
+    $_SESSION['visitors']++;
+}
+
+echo "عدد زوار الموقع: " . $_SESSION['visitors'];
+
+// لتتبع الزوار الذين غادروا، يمكنك استخدام متغير آخر وتحديثه عند إغلاق الجلسة
+?>
