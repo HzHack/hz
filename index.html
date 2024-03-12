@@ -110,22 +110,26 @@ footer a {color: #3c97bf;text-decoration: none;margin-right:5px;}
 
 
 
-<!DOCTYPE html>
 
 
 
-    <?php
-session_start();
+    <!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>عدد زوار الموقع</title>
+</head>
+<body>
+<div id="visitorCount">جاري تحميل عدد الزوار...</div>
 
-// إذا كانت هذه هي الزيارة الأولى للمستخدم، قم بإنشاء متغير جديد في الجلسة
-if (!isset($_SESSION['visitors'])) {
-    $_SESSION['visitors'] = 1;
-} else {
-    // إذا كان المستخدم قد زار الموقع من قبل، قم بزيادة العدد
-    $_SESSION['visitors']++;
-}
-
-echo "عدد زوار الموقع: " . $_SESSION['visitors'];
-
-// لتتبع الزوار الذين غادروا، يمكنك استخدام متغير آخر وتحديثه عند إغلاق الجلسة
-?>
+<script>
+// استخدم JavaScript للاتصال بالخادم وجلب عدد الزوار
+fetch('path_to_your_api/visitors_count')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('visitorCount').textContent = `عدد الزوار الذين زاروا الموقع: ${data}`;
+  })
+  .catch(error => console.error('خطأ في جلب البيانات:', error));
+</script>
+</body>
+</html>
