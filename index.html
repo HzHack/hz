@@ -107,38 +107,3 @@ footer a {color: #3c97bf;text-decoration: none;margin-right:5px;}
 </body>
 
 
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عدد زوار الموقع</title>
-</head>
-<body>
-    <p>عدد الزوار: <span id="visitorCount">0</span></p>
-
-    <script>
-        // تحقق مما إذا كان العدد مخزنًا في localStorage
-        let visitorCount = localStorage.getItem('visitorCount');
-
-        // إذا لم يكن موجودًا، ابدأ بالعدد 0
-        if (!visitorCount) {
-            visitorCount = 100;
-        }
-
-        // زيادة العدد بمقدار 1
-        visitorCount++;
-
-        // حفظ العدد المحدث في localStorage
-        localStorage.setItem('visitorCount', visitorCount);
-
-        // عرض العدد في الصفحة
-        document.getElementById('visitorCount').textContent = visitorCount;
-    </script>
-</body>
-</html>
-
-
-
-
-    
