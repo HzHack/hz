@@ -107,6 +107,28 @@
             gap: 8px;
         }
 
+        /* عنوان الكتابة */
+        .typing-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 24px;
+            min-height: 36px;
+        }
+
+        .typing-title .cursor {
+            display: inline-block;
+            width: 2px;
+            background: #bc8fff;
+            animation: blink 0.7s infinite;
+            margin-right: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         .social-links {
             display: flex;
             flex-direction: column;
@@ -153,6 +175,7 @@
         .social-link.insta:hover { background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045); }
         .social-link.telegram:hover { background: linear-gradient(90deg, #0088cc, #00aced); }
         .social-link.twitter:hover { background: linear-gradient(90deg, #1da1f2, #0d8ecf); }
+        .social-link.email:hover { background: linear-gradient(90deg, #EA4335, #BB001B); }
 
         .info-button {
             background: linear-gradient(45deg, #4e54c8, #8f94fb);
@@ -173,6 +196,7 @@
             box-shadow: 0 15px 35px rgba(78, 84, 200, 0.6);
         }
 
+        /* المودال */
         .info-modal {
             display: none;
             position: fixed;
@@ -190,7 +214,9 @@
         .info-content {
             background: #161625;
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
             border-radius: 25px;
             padding: 40px;
             position: relative;
@@ -326,21 +352,64 @@
         .particle { position: absolute; background: rgba(255, 255, 255, 0.3); border-radius: 50%; animation: floatUp linear infinite; }
         @keyframes floatUp { to { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
 
+        /* شهادات */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .cert-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(188, 143, 255, 0.5);
+        }
+
+        .cert-card i {
+            font-size: 28px;
+            color: var(--cert-color, #bc8fff);
+            margin-bottom: 10px;
+        }
+
+        .cert-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .cert-issuer {
+            font-size: 13px;
+            color: #aaa;
+        }
+
         @media (max-width: 600px) {
             .full-name { font-size: 32px; }
             .profile-card { padding: 30px 20px; }
             .social-link { font-size: 18px; padding: 15px 20px; }
             .avatar-container { width: 160px; height: 160px; }
+            .info-content { padding: 25px; }
         }
     </style>
-<base target="_blank">
+    <base target="_blank">
 </head>
 <body>
 
     <div class="particles" id="particles"></div>
 
     <div class="container">
-        <h2 style="text-align: center; margin-bottom: 20px; color: rgba(255,255,255,0.8); font-size: 24px;">البهكلي بلس</h2>
+        <h2 class="typing-title" id="typingTitle"></h2>
 
         <div class="profile-card">
             <div class="avatar-container floating">
@@ -357,25 +426,25 @@
                     <span>مشاريعي</span>
                     <i class="fa fa-laptop-code"></i>
                 </a>
-
                 <a href="https://www.snapchat.com/add/sww_p" class="social-link snap" target="_blank" rel="noopener noreferrer" aria-label="سناب شات HZ">
                     <span>سناب شات HZ</span>
                     <i class="fab fa-snapchat-ghost"></i>
                 </a>
-
                 <a href="https://www.instagram.com/sww_p/" class="social-link insta" target="_blank" rel="noopener noreferrer" aria-label="إنستقرام HZ">
                     <span>إنستقرام HZ</span>
                     <i class="fab fa-instagram"></i>
                 </a>
-
                 <a href="https://x.com/sww_p" class="social-link twitter" target="_blank" rel="noopener noreferrer" aria-label="تويتر HZ">
                     <span>تويتر HZ</span>
                     <i class="fab fa-twitter"></i>
                 </a>
-
                 <a href="https://t.me/+SrNJO0OctAIYDseZ" class="social-link telegram" target="_blank" rel="noopener noreferrer" aria-label="تليجرام HZ">
                     <span>تليجرام HZ</span>
                     <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="mailto:swwp142173@email.com" class="social-link email" target="_blank" rel="noopener noreferrer" aria-label="البريد الإلكتروني">
+                    <span>البريد الإلكتروني</span>
+                    <i class="fas fa-envelope"></i>
                 </a>
             </div>
 
@@ -389,6 +458,7 @@
         </div>
     </div>
 
+    <!-- المودال الاحترافي -->
     <div class="info-modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="info-content">
             <button class="close-btn" id="closeBtn" aria-label="إغلاق">&times;</button>
@@ -409,7 +479,6 @@
             </div>
 
             <h3 style="color: #bc8fff; font-size: 18px; margin-bottom: 15px;">مجالات الخبرة</h3>
-
             <div class="skills-grid">
                 <div class="skill-item">
                     <i class="fab fa-apple"></i>
@@ -433,6 +502,41 @@
                 </div>
             </div>
 
+            <!-- قسم الشهادات -->
+            <h3 style="color: #bc8fff; font-size: 18px; margin-bottom: 15px; margin-top: 30px;">🏆 الشهادات والإنجازات</h3>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <i class="fas fa-certificate" style="color: #3b82f6;"></i>
+                    <div class="cert-title">هيئة تنظيم الاتصالات</div>
+                    <div class="cert-issuer">TRA</div>
+                </div>
+                <div class="cert-card">
+                    <i class="fab fa-java" style="color: #f89820;"></i>
+                    <div class="cert-title">مدخل لغة Java</div>
+                    <div class="cert-issuer">Java Programming</div>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-shield-alt" style="color: #10b981;"></i>
+                    <div class="cert-title">أمن المعلومات</div>
+                    <div class="cert-issuer">Cybersecurity</div>
+                </div>
+                <div class="cert-card">
+                    <i class="fab fa-python" style="color: #ffd43b;"></i>
+                    <div class="cert-title">دبلوم برمجيات Python</div>
+                    <div class="cert-issuer">Python Development</div>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-robot" style="color: #06b6d4;"></i>
+                    <div class="cert-title">مليون سعودي في الذكاء الاصطناعي</div>
+                    <div class="cert-issuer">SDAIA</div>
+                </div>
+                <div class="cert-card">
+                    <i class="fas fa-microchip" style="color: #a78bfa;"></i>
+                    <div class="cert-title">معسكر AI ERA</div>
+                    <div class="cert-issuer">AI ERA Bootcamp</div>
+                </div>
+            </div>
+
             <p style="text-align: center; color: #aaa; margin-top: 20px; font-size: 14px;">"المعرفة قوة، ومشاركتها واجب"</p>
         </div>
     </div>
@@ -442,7 +546,6 @@
             const container = document.getElementById('particles');
             const isMobile = window.innerWidth <= 600;
             const count = isMobile ? 15 : 30;
-
             for(let i=0; i<count; i++) {
                 const p = document.createElement('div');
                 p.classList.add('particle');
@@ -456,27 +559,33 @@
                 container.appendChild(p);
             }
 
+            // تأثير الكتابة
+            const texts = ["البهكلي بلس", "Hz Bahkali Plus", "مبرمج ومطور"];
+            let i = 0, j = 0, currentText = "", isDeleting = false;
+            const typingEl = document.getElementById('typingTitle');
+            function type() {
+                currentText = texts[i];
+                typingEl.innerHTML = currentText.substring(0, j) + '<span class="cursor">|</span>';
+                if (!isDeleting && j < currentText.length) {
+                    j++;
+                    setTimeout(type, 100);
+                } else if (isDeleting && j > 0) {
+                    j--;
+                    setTimeout(type, 50);
+                } else {
+                    isDeleting = !isDeleting;
+                    if (!isDeleting) i = (i + 1) % texts.length;
+                    setTimeout(type, 1500);
+                }
+            }
+            type();
+
             const modal = document.getElementById('infoModal');
             const btn = document.querySelector('.info-button');
             const close = document.getElementById('closeBtn');
-
-            btn.onclick = () => {
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            };
-
-            close.onclick = () => {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
-            };
-
-            window.onclick = (e) => {
-                if (e.target == modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }
-            };
-
+            btn.onclick = () => { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; };
+            close.onclick = () => { modal.style.display = 'none'; document.body.style.overflow = ''; };
+            window.onclick = (e) => { if (e.target == modal) { modal.style.display = 'none'; document.body.style.overflow = ''; } };
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && modal.style.display === 'flex') {
                     modal.style.display = 'none';
@@ -486,4 +595,4 @@
         });
     </script>
 </body>
-</html>l>
+</html>
